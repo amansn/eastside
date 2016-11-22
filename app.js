@@ -3,16 +3,30 @@ window.onload = function() {
 
   //AJAX request
   $.ajax({
-    url: "https://raw.githubusercontent.com/amansn/eastside/master/posts.json"
+    url: 'https://raw.githubusercontent.com/amansn/eastside/master/posts.json'
   }).done(function(response) {
     console.log('done');
     var data = JSON.parse(response);
-    console.log('response1', data);
-    var sortedData = data.items.sort(function(a,b){
-      return new Date(b.item_published) - new Date(a.item_published);
+    var sortedData = data.items.sort(function(a, b) {
+      a = a.item_published;
+      b = b.item_published;
+      return a>b ? -1 : a<b ? 1 : 0;
     });
     console.log('sortedData', sortedData);
+    var wall = document.getElementById('wall');
+    for (item in sortedData) {
+      console.log('test');
+      var div = document.createElement('div');
+      div.className = 'post';
+      if ()
+      div.innerHTML = 'test';
+      wall.appendChild(div);
+    }
   }).fail(function() {
     console.log('fail');
   });
+}
+
+var displayManual = function() {
+
 }
