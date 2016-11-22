@@ -8,9 +8,7 @@ window.onload = function() {
     console.log('done');
     var data = JSON.parse(response);
     console.log('response1', data);
-    var sortedData = response.sort(function(a,b){
-      // Turn your strings into dates, and then subtract them
-      // to get a value that is either negative, positive, or zero.
+    var sortedData = data.items.sort(function(a,b){
       return new Date(b.item_published) - new Date(a.item_published);
     });
     console.log('sortedData', sortedData);
